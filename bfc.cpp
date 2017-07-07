@@ -21,15 +21,14 @@ int bfc::operation() {
 
 int bfc::performLoop() {
 	if(arr[arrPointer] == 0) {
-		loop.push(prog[progPointer]);
-		while(!loop.empty() && progPointer < prog.length()) {
+		int loop = 1;
+		while(loop && progPointer < prog.length()) {
 			progPointer++;
-			if(prog[progPointer] == '[') loop.push(prog[progPointer]);
-			else if(prog[progPointer] == ']') loop.pop();
+			if(prog[progPointer] == '[') loop++;
+			else if(prog[progPointer] == ']') loop--;
 		}
 		progPointer++;
-		if(!loop.empty()) {
-
+		if(loop) {
 			return 2;
 		}
 	}
@@ -45,7 +44,7 @@ int bfc::performLoop() {
 			if(operation() == 1) return 1;
 			if(prog[progPointer] == ']') {
 				if(arr[arrPointer] != 0)
-					progPointer = loopStart-1;
+					progPointer = loopStart;
 				else {
 					progPointer++;
 					break;
@@ -58,7 +57,7 @@ int bfc::performLoop() {
 }
 
 void bfc::printError(int code) {
-	int row = 0, col = 0;
+	int row = 1, col = 0;
 	for(char c: prog) {
 		if(c == '\n') {
 			row++;
@@ -77,6 +76,7 @@ void bfc::printError(int code) {
 
 int bfc::progRun() {
 	int ret;
+	cout << prog << endl;
 	while(progPointer < prog.length()) {
 		if(prog[progPointer] == '[') {
 			ret = performLoop();
@@ -92,6 +92,7 @@ int bfc::progRun() {
 		}
 		progPointer++;
 	}
+
 	if(progPointer != prog.length())
 		return 1;
 	return 0;

@@ -9,7 +9,6 @@ using namespace std;
 
 class bfc {
 private:
-	stack<char> loop;
 	string prog;
 	int arr[MAX];
 	unsigned int arrPointer;
