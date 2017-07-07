@@ -76,7 +76,6 @@ void bfc::printError(int code) {
 
 int bfc::progRun() {
 	int ret;
-	cout << prog << endl;
 	while(progPointer < prog.length()) {
 		if(prog[progPointer] == '[') {
 			ret = performLoop();
