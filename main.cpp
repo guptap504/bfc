@@ -10,11 +10,11 @@ int main(int argc, char const *argv[]) {
 	ifstream fi(argv[1]);
 	string str,line;
 	while(getline(fi,line)){
-		str+=line;
+		str.append(line);
+		str.append("\n");
 	}
 	fi.close();
 	bfc myprog(str);
 	myprog.progRun();
-	cout << endl;
 	return 0;
 }
