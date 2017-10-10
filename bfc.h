@@ -7,8 +7,9 @@
 
 using namespace std;
 
-class bfc {
-private:
+class bfc
+{
+  private:
 	string prog;
 	int arr[MAX];
 	unsigned int arrPointer;
@@ -16,8 +17,10 @@ private:
 	int operation();
 	int performLoop();
 	void printError(int);
-public:
-	bfc(string p) {
+
+  public:
+	bfc(string p)
+	{
 		prog = p;
 		arrPointer = progPointer = 0;
 	}
